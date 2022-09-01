@@ -1,6 +1,5 @@
 import {
   Card,
-  CardActionArea,
   CardHeader,
   CardContent,
   Typography,
@@ -8,12 +7,11 @@ import {
 } from "@mui/material";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
-import { temporalObjects } from "../../interface/interfaces";
 import { useState } from "react";
+import { TpokemonAttributes } from "../../interface/interfaces";
 
 type PokemonCardProps = {
-  pokemon: temporalObjects;
+  pokemon: TpokemonAttributes;
 };
 let initialState: boolean = false;
 
@@ -33,9 +31,6 @@ export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
         }
         title={pokemon.name}
       />
-      <CardContent>
-        <Typography variant="body2">{pokemon.content}</Typography>
-      </CardContent>
     </Card>
   );
 };

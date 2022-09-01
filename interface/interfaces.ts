@@ -1,5 +1,9 @@
-export type temporalObjects = {
+export type TpokemonAttributes = {
   name: string;
-  content: string;
+  url: string;
 };
-export type temporalItems = Array<temporalObjects>;
+export type pokemonsArray = Array<TpokemonAttributes>;
+
+export type TApiPokemonResp = {
+  data: TpokemonAttributes[];
+};
