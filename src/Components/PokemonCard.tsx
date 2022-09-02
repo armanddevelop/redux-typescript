@@ -29,7 +29,7 @@ export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
             {fillFavIcon ? <FavoriteIcon /> : <FavoriteBorderOutlinedIcon />}
           </IconButton>
         }
-        title={pokemon.name}
+        title={`${pokemon.name} ${pokemon.number}`}
       />
     </Card>
   );
