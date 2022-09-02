@@ -1,18 +1,20 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getPokemons } from "../api/index";
-import { useState, useEffect } from "react";
+
+import { setPokemonsAction } from "../actions";
 import { TApiPokemonResp } from "../../interface/interfaces";
 
 export const usePokemons = () => {
-  const [pokemons, setPokemons] = useState<TApiPokemonResp>({ data: [] });
+  const { pokemons } = useSelector((state: any) => state.data);
+  const dispatch = useDispatch();
   useEffect(() => {
     getPokemons()
       .then((res) => {
-        setPokemons({
-          data: res,
-        });
+        dispatch(setPokemonsAction(res));
       })
       .catch((err) => console.error("[usePokemonsError]: ", err));
-  }, []);
+  }, [dispatch]);
 
   return { pokemons };
 };

@@ -1,12 +1,11 @@
 import "./App.css";
 import { Searcher, PokemonList } from "./Components";
-
 import logo from "./statics/logo.svg";
 import { usePokemons } from "./hooks/usePokemons";
 
 function App() {
   const { pokemons } = usePokemons();
-  const { data } = pokemons;
+
   return (
     <div className="App">
       <div>
@@ -16,7 +15,7 @@ function App() {
       <div className="searcher">
         <Searcher />
       </div>
-      <PokemonList pokemons={data} />
+      <PokemonList pokemons={pokemons} />
     </div>
   );
 }
