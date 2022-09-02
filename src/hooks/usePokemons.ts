@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons } from "../api/index";
-
 import { setPokemonsAction } from "../actions";
-import { TApiPokemonResp } from "../../interface/interfaces";
 
 export const usePokemons = () => {
   const { pokemons } = useSelector((state: any) => state.data);

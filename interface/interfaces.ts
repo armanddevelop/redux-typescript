@@ -5,5 +5,5 @@ export type TpokemonAttributes = {
 export type pokemonsArray = Array<TpokemonAttributes>;
 
 export type TApiPokemonResp = {
-  data: TpokemonAttributes[];
+  pokemons: TpokemonAttributes[];
 };

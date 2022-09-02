@@ -1,10 +1,7 @@
-import { TpokemonAttributes } from "../../interface/interfaces";
+import { TApiPokemonResp } from "../../interface/interfaces";
 import { SET_POKEMONS } from "../actions/types";
-type state = {
-  pokemons: TpokemonAttributes[];
-};
 
-const initialState: state = {
+const initialState: TApiPokemonResp = {
   pokemons: [],
 };
 
