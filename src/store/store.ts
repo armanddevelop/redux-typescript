@@ -5,7 +5,7 @@ import {
   compose,
 } from "redux";
 //import thunk from "redux-thunk";
-import { loggerActions, featuring, addIdxToPokemon } from "../middlewares";
+import { addIdxToPokemon } from "../middlewares";
 import { pokemonReducer } from "../reducers/pokemonsReducer";
 
 declare global {
@@ -23,5 +23,5 @@ const reducers = combineReducers({ data: pokemonReducer });
 
 export const store = createStore(
   reducers,
-  composeEnhancers(applyMiddleware(loggerActions, featuring, addIdxToPokemon))
+  composeEnhancers(applyMiddleware(addIdxToPokemon))
 );
