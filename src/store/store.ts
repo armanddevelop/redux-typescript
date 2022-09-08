@@ -4,9 +4,9 @@ import {
   combineReducers,
   compose,
 } from "redux";
-//import thunk from "redux-thunk";
-import { addIdxToPokemon } from "../middlewares";
-import { pokemonReducer } from "../reducers/pokemonsReducer";
+import thunk from "redux-thunk";
+import { loggerActions } from "../middlewares";
+import { pokemonReducer, setLoadingReducer } from "../reducers";
 
 declare global {
   interface Window {
@@ -19,9 +19,12 @@ const composeEnhancers =
     window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]) ||
   compose;
 
-const reducers = combineReducers({ data: pokemonReducer });
+const reducers = combineReducers({
+  data: pokemonReducer,
+  loading: setLoadingReducer,
+});
 
 export const store = createStore(
   reducers,
-  composeEnhancers(applyMiddleware(addIdxToPokemon))
+  composeEnhancers(applyMiddleware(thunk))
 );

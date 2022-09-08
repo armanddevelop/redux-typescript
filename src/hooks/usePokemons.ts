@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons, getDetailsPokemons } from "../api/index";
-import { setPokemonsAction } from "../actions";
+import { setPokemonsAction, setLoadingAction } from "../actions";
 
 const filterData = (details: Array<any>) => {
   const res = details.map(({ data }) => data);
@@ -19,9 +19,12 @@ export const usePokemons = () => {
           pokemons.map(({ url }: any) => getDetailsPokemons(url))
         );
         const data = filterData(pokemonsDetails);
+
         dispatch(setPokemonsAction(data));
+        dispatch(setLoadingAction());
       } catch (error) {
         console.error("[getFullDetailsPokemonsError]: ", error);
+        dispatch(setLoadingAction());
       }
     };
     getFullDetailsPokemons();

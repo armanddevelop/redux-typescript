@@ -1,7 +1,13 @@
-.App {
+.image {
   text-align: center;
 }
-
+h1 {
+  text-align: center;
+}
+.circular-progress {
+  text-align: center;
+  margin: 25px;
+}
 .searcher {
   display: flex;
   align-items: center;
@@ -23,4 +29,9 @@
   .poke-ball {
     max-width: 25%;
   }
+}
+.content-card {
+  float: right;
+  width: 20%;
+  margin-top: -70px;
 }

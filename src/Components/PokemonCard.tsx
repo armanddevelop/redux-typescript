@@ -23,14 +23,15 @@ export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
             {fillFavIcon ? <FavoriteIcon /> : <FavoriteBorderOutlinedIcon />}
           </IconButton>
         }
-        title={`${pokemon.name} ${pokemon.number}`}
+        sx={{ textAlign: "center" }}
+        title={`${pokemon.name} ${pokemon.id}`}
       />
       <CardMedia
         component="img"
         sx={{ width: "90%" }}
         image={pokemon.sprites.front_default}
       />
-      <ContentCard abilities={pokemon.abilities} />
+      <ContentCard pokemonContent={pokemon} />
     </Card>
   );
 };

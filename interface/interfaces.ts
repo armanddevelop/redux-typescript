@@ -1,10 +1,11 @@
 export type TpokemonAttributes = {
   abilities: Array<arrAbilities>;
   name: string;
-  number: number;
+  id: number;
   moves: Array<arrMoves>;
   sprites: objSprites;
   weight: number;
+  types: Array<pokemonType>;
 };
 export type pokemonsArray = Array<TpokemonAttributes>;
 
@@ -35,4 +36,16 @@ export type arrMoves = {
 
 export type objSprites = {
   front_default: string;
+};
+
+export type loading = {
+  loadingData: boolean;
+};
+
+export type pokemonType = {
+  slot: number;
+  type: {
+    name: string;
+    url: string;
+  };
 };
