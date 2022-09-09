@@ -1,23 +1,22 @@
+import { useDispatch } from "react-redux";
 import { Card, CardHeader, IconButton, CardMedia } from "@mui/material";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { TpokemonAttributes } from "../../interface/interfaces";
 import { ContentCard } from "./ContentCard";
 import { setFavoriteAction } from "../actions";
+import { useFavorite } from "../hooks/useFavorite";
 
 type PokemonCardProps = {
   pokemon: TpokemonAttributes;
 };
-let initialState: boolean = false;
 
 export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
-  const [fillFavIcon, setFillFavIcon] = useState<boolean>(initialState);
+  const { isFavorite, setIsFavorite } = useFavorite(pokemon.id);
   const dispatch = useDispatch();
 
   const handleClickFav = (id: number) => {
-    setFillFavIcon(!fillFavIcon);
+    setIsFavorite(!isFavorite);
     dispatch(setFavoriteAction(id));
   };
   return (
@@ -28,7 +27,7 @@ export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
             aria-label="settings"
             onClick={() => handleClickFav(pokemon.id)}
           >
-            {fillFavIcon ? <FavoriteIcon /> : <FavoriteBorderOutlinedIcon />}
+            {!isFavorite ? <FavoriteBorderOutlinedIcon /> : <FavoriteIcon />}
           </IconButton>
         }
         sx={{ textAlign: "center" }}

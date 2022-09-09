@@ -5,7 +5,7 @@ import {
   compose,
 } from "redux";
 import thunk from "redux-thunk";
-//import { loggerActions } from "../middlewares";
+//import { addIdxToPokemon } from "../middlewares";
 import { pokemonReducer, uiReducer } from "../reducers";
 
 declare global {

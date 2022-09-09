@@ -6,12 +6,13 @@ const initialState: TApiPokemonResp = {
   favPokemons: [],
 };
 
-const setfavorite = (state: any, action: any) => {
+const favorite = (state: any, action: any) => {
   const favorite = state.pokemons.find(({ id }: any) => id === action.payload);
   state.favPokemons.push(favorite);
+  localStorage.setItem("favPokemons", JSON.stringify(state.favPokemons));
   return state;
 };
-const setFavoritePokemons = (state: any, action: any) => {
+const setFavoritePokemon = (state: any, action: any) => {
   if (state.favPokemons.length !== 0) {
     const findPokemon = state.favPokemons.find(
       ({ id }: any) => id === action.payload
@@ -20,26 +21,35 @@ const setFavoritePokemons = (state: any, action: any) => {
       const filterPokemons = state.favPokemons.filter(
         ({ id }: any) => id !== action.payload
       );
+      localStorage.setItem("favPokemons", JSON.stringify(filterPokemons));
       return {
         ...state,
         favPokemons: filterPokemons,
       };
     } else {
-      return setfavorite(state, action);
+      return favorite(state, action);
     }
   } else {
-    return setfavorite(state, action);
+    return favorite(state, action);
   }
 };
+
 export const pokemonReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case SET_POKEMONS:
+      let setFavorites: string | [] = "";
+      if (localStorage.getItem("favPokemons")) {
+        setFavorites = JSON.parse(localStorage.getItem("favPokemons") || "");
+        if (setFavorites === "") setFavorites = [];
+      } else {
+        setFavorites = [];
+      }
       return {
-        ...state,
         pokemons: action.payload,
+        favPokemons: setFavorites,
       };
     case SET_FAVORITE:
-      return setFavoritePokemons(state, action);
+      return setFavoritePokemon(state, action);
     default:
       return state;
   }
