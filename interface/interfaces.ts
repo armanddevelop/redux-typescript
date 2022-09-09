@@ -11,6 +11,7 @@ export type pokemonsArray = Array<TpokemonAttributes>;
 
 export type TApiPokemonResp = {
   pokemons: TpokemonAttributes[];
+  favPokemons: any[];
 };
 
 export type action = {
@@ -38,7 +39,7 @@ export type objSprites = {
   front_default: string;
 };
 
-export type loading = {
+export type ui = {
   loadingData: boolean;
 };
 

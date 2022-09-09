@@ -1,3 +1,3 @@
 import { pokemonReducer } from "./pokemonsReducer";
-import { setLoadingReducer } from "./uiReducer";
-export { pokemonReducer, setLoadingReducer };
+import { uiReducer } from "./uiReducer";
+export { pokemonReducer, uiReducer };

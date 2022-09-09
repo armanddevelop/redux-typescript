@@ -5,8 +5,8 @@ import {
   compose,
 } from "redux";
 import thunk from "redux-thunk";
-import { loggerActions } from "../middlewares";
-import { pokemonReducer, setLoadingReducer } from "../reducers";
+//import { loggerActions } from "../middlewares";
+import { pokemonReducer, uiReducer } from "../reducers";
 
 declare global {
   interface Window {
@@ -21,7 +21,7 @@ const composeEnhancers =
 
 const reducers = combineReducers({
   data: pokemonReducer,
-  loading: setLoadingReducer,
+  ui: uiReducer,
 });
 
 export const store = createStore(

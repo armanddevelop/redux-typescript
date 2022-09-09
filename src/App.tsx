@@ -6,7 +6,7 @@ import { usePokemons } from "./hooks/usePokemons";
 
 function App() {
   const { pokemons } = usePokemons();
-  const { loadingData } = useSelector((state: any) => state.loading);
+  const { loadingData } = useSelector((state: any) => state.ui);
   const renderComponent = () => {
     return loadingData ? <Loading /> : <PokemonList pokemons={pokemons} />;
   };

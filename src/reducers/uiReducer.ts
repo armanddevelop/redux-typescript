@@ -1,18 +1,17 @@
-import { loading } from "../../interface/interfaces";
+import { ui } from "../../interface/interfaces";
 import { SET_LOADING } from "../actions/types";
 
-const initialState: loading = {
+const initialState: ui = {
   loadingData: true,
 };
 
-export const setLoadingReducer = (state = initialState, action: any) => {
+export const uiReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case SET_LOADING:
       return {
         ...state,
         loadingData: !state.loadingData,
       };
-
     default:
       return state;
   }
