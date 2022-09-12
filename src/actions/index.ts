@@ -1,4 +1,9 @@
-import { SET_POKEMONS, SET_LOADING, SET_FAVORITE } from "./types";
+import {
+  SET_POKEMONS,
+  SET_LOADING,
+  SET_FAVORITE,
+  SEARCH_POKEMON,
+} from "./types";
 
 export const setPokemonsAction = (payload: any) => ({
   type: SET_POKEMONS,
@@ -11,5 +16,10 @@ export const setLoadingAction = () => ({
 
 export const setFavoriteAction = (payload: number) => ({
   type: SET_FAVORITE,
+  payload,
+});
+
+export const searchPokemonAction = (payload: any) => ({
+  type: SEARCH_POKEMON,
   payload,
 });

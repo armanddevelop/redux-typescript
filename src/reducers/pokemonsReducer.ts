@@ -1,5 +1,5 @@
 import { TApiPokemonResp } from "../../interface/interfaces";
-import { SET_POKEMONS, SET_FAVORITE } from "../actions/types";
+import { SET_POKEMONS, SET_FAVORITE, SEARCH_POKEMON } from "../actions/types";
 
 const initialState: TApiPokemonResp = {
   pokemons: [],
@@ -50,6 +50,17 @@ export const pokemonReducer = (state = initialState, action: any) => {
       };
     case SET_FAVORITE:
       return setFavoritePokemon(state, action);
+    case SEARCH_POKEMON:
+      if (action.payload === "") {
+        return state;
+      }
+      const pokemonsFilter = state.pokemons.filter(({ name }: any) =>
+        name.includes(action.payload)
+      );
+      return {
+        ...state,
+        pokemons: pokemonsFilter,
+      };
     default:
       return state;
   }

@@ -1,9 +1,13 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { IconButton, InputBase, Paper } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { searchPokemonAction } from "../actions";
 
 export const Searcher = () => {
+  const dispatch = useDispatch();
   const handleChange = (value: string) => {
-    console.log("Esto vale e ", value);
+    const valueTranform = value.toLocaleLowerCase();
+    dispatch(searchPokemonAction(valueTranform));
   };
   return (
     <Paper

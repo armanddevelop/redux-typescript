@@ -28,7 +28,7 @@ export const usePokemons = () => {
       }
     };
     getFullDetailsPokemons();
-  }, [dispatch]);
+  }, []);
 
   return { pokemons };
 };
