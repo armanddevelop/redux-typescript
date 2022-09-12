@@ -4,6 +4,7 @@ import { SET_POKEMONS, SET_FAVORITE, SEARCH_POKEMON } from "../actions/types";
 const initialState: TApiPokemonResp = {
   pokemons: [],
   favPokemons: [],
+  filterPokemons: [],
 };
 
 const favorite = (state: any, action: any) => {
@@ -47,19 +48,23 @@ export const pokemonReducer = (state = initialState, action: any) => {
       return {
         pokemons: action.payload,
         favPokemons: setFavorites,
+        filterPokemons: action.payload,
       };
     case SET_FAVORITE:
       return setFavoritePokemon(state, action);
     case SEARCH_POKEMON:
       if (action.payload === "") {
-        return state;
+        return {
+          ...state,
+          filterPokemons: state.pokemons,
+        };
       }
       const pokemonsFilter = state.pokemons.filter(({ name }: any) =>
         name.includes(action.payload)
       );
       return {
         ...state,
-        pokemons: pokemonsFilter,
+        filterPokemons: pokemonsFilter,
       };
     default:
       return state;

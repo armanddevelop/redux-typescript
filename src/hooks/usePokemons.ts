@@ -9,7 +9,7 @@ const filterData = (details: Array<any>) => {
 };
 
 export const usePokemons = () => {
-  const { pokemons } = useSelector((state: any) => state.data);
+  const { filterPokemons } = useSelector((state: any) => state.data);
   const dispatch = useDispatch();
   useEffect(() => {
     const getFullDetailsPokemons = async () => {
@@ -30,5 +30,5 @@ export const usePokemons = () => {
     getFullDetailsPokemons();
   }, []);
 
-  return { pokemons };
+  return { pokemons: filterPokemons };
 };

@@ -12,6 +12,7 @@ export type pokemonsArray = Array<TpokemonAttributes>;
 export type TApiPokemonResp = {
   pokemons: TpokemonAttributes[];
   favPokemons: any[];
+  filterPokemons: any[];
 };
 
 export type action = {
